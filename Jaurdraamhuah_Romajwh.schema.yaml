@@ -1,0 +1,167 @@
+custom_phrase:
+  db_class: stabledb
+  dictionary: ""
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: 1
+  user_dict: custom_phrase
+customization: 1052661522
+emoji_cn:
+  opencc_config: emoji.json
+  option_name: emoji_cn
+  tips: all
+engine:
+  filters:
+    - simplifier
+    - uniquifier
+    - simplifier@emoji_cn   #Emoji滤镜
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - "table_translator@custom_phrase"
+    - reverse_lookup_translator
+    - script_translator
+key_binder:
+  import_preset: default
+punctuator:
+  import_preset: symbols
+recognizer:
+  import_preset: default
+  patterns:
+    punct: "^/([0-9]0?|[a-z]+)$"
+    reverse_lookup: "`[a-z]*'?$"
+reverse_lookup:
+  comment_format:
+    - "xform/([nl])v/$1ü/"
+  dictionary: stroke
+  enable_completion: true
+  preedit_format:
+    - "xlit/hspnz/一丨丿丶乙/"
+  prefix: "`"
+  suffix: "'"
+  tips: "〔筆畫〕"
+schema:
+  author:
+    - "陬繹部鄉"
+  description: |
+    Rime 預設的嶧州話輸入方案。
+    
+  name: "嶧州話"
+  schema_id: Jaurdraamhuah_Romajwh
+  version: 0.23.custom.1052661522
+speller:
+  alphabet: 'zyxwvutsrqponmlkjihgfedcba'
+  initials: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - erase/^xx$/                      # 第一行保留
+    - derive/^shu$/fu/
+    - derive/^shwu$/fwu/
+    - derive/^shuu$/fuu/
+    - derive/^shuh$/fuh/
+    - derive/^shua$/fa/
+    - derive/^shwa$/far/
+    - derive/^shuaa$/faa/
+    - derive/^shuah$/fah/
+    - derive/^shoai$/fae/
+    - derive/^shwai$/fair/
+    - derive/^shuay$/fay/
+    - derive/^shoai$/fae/
+    - derive/^shuai$/fai/
+    - derive/^shuan$/fan/
+    - derive/^shwan$/farn/
+    - derive/^shoan$/faan/
+    - derive/^shuann$/fann/
+    - derive/^shuam$/fam/
+    - derive/^shwam$/farm/
+    - derive/^shoam$/faam/
+    - derive/^shuank$/fank/
+    - derive/^shuei$/fei/
+    - derive/^shwei$/feir/
+    - derive/^shoei$/feei/
+    - derive/^shuey$/fey/
+    - derive/^shuen$/fen/
+    - derive/^shwen$/fern/
+    - derive/^shoen$/feen/
+    - derive/^shuenn$/fenn/
+    - derive/^shuo$/fo/
+    - derive/^shwo$/fwo/
+    - derive/^shuoo$/foo/
+    - derive/^shuoh$/foh/
+    - derive/^rhu$/vhu/
+    - derive/^ru$/vu/
+    - derive/^ruu$/vuu/
+    - derive/^ruh$/vuh/
+    - derive/^rhuan$/vhan/
+    - derive/^ruan$/van/
+    - derive/^roan$/vaan/
+    - derive/^ruann$/vann/
+    - derive/^rhuei$/vhei/
+    - derive/^ruei$/vei/
+    - derive/^roei$/veei/
+    - derive/^ruey$/vey/
+    - derive/^rhuen$/vhen/
+    - derive/^ruen$/ven/
+    - derive/^roen$/veen/
+    - derive/^ruenn$/venn/
+    - derive/^rhuo$/vho/
+    - derive/^ruo$/vo/
+    - derive/^ruoo$/voo/
+    - derive/^ruoh$/voh/
+    - derive/^rhum$/vhum/
+    - derive/^sw$/seu/
+    - derive/^swr$/seur/
+    - derive/^swh$/seuh/
+    - derive/^tsw$/tseu/
+    - derive/^tswr$/tseu/
+    - derive/^tswh$/tseuh/
+    - derive/^jw$/jeu/
+    - derive/^jwr$/jeur/
+    - derive/^jwh$/jeuh/
+    - derive/^yeuo$/yueh/
+    - derive/^bae$/beei/
+    - derive/^bai$/bei/
+    - derive/^pae$/peei/
+    - derive/^pai$/pei/
+    - derive/^([jlmdn])+iow$/$1iiw/
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: ["中", "A"]
+  - name: full_shape
+    states: ["半角", "全角"]
+  - name: simplification
+    reset: 1
+    states: ["漢字", "汉字"]
+  - name: ascii_punct
+    states: ["。，", "．，"]
+  - name: emoji_cn
+    reset: 1
+    states: ["〇", "😊"]
+
+
+translator:
+  dictionary: Jaurdraamhuah_Romajwh
+  spelling_hints: 7
+  preedit_format:
+    
+  comment_format:
+    - xform/ ([aeiou])(h|m|r)/$1$2/
+    - xform/([aeouy])([iuomw])/$1$2/
+    - xform/ ([aeun])(nk) /$1$2/
+    - xform/([a-z]+)[0-5]/$1/
